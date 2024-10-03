@@ -19,4 +19,8 @@ describe("String Calculator", () => {
     expect(add("1,2,3")).toBe(6);
     expect(add("4,5,6,7")).toBe(22);
   });
+  // Handle New Lines Between Numbers
+  it("should handle new lines between numbers", () => {
+    expect(add("1\n2,3")).toBe(6);
+  });
 });
