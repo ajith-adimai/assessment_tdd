@@ -7,7 +7,17 @@ function add(numbers) {
       numbers = parts[1];
   }
   const numberArray = numbers.replace(/\n/g, delimiter).split(delimiter);
-  const sum = numberArray.reduce((acc, num) => acc + parseInt(num), 0);
+  const negativeNumbers = [];
+  const sum = numberArray.reduce((acc, num) => {
+    const parsedNum = parseInt(num);
+        if (parsedNum < 0) {
+            negativeNumbers.push(parsedNum);
+        }
+        return acc + parsedNum;
+  }, 0);
+  if (negativeNumbers.length > 0) {
+    throw new Error(`negative numbers not allowed: ${negativeNumbers.join(",")}`);
+  }
   return sum;
 }
 
